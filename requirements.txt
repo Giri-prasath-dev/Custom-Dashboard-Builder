@@ -1,0 +1,30 @@
+# Django
+Django>=6.0
+
+# Database
+# For SQLite (default): No additional package needed (included with Python)
+# For MySQL: uncomment the following line
+# mysqlclient>=2.1.0
+# For PostgreSQL: uncomment the following line
+# psycopg2-binary>=2.9.0
+
+# Django REST Framework
+djangorestframework>=3.14.0
+
+# JWT Authentication
+djangorestframework-simplejwt>=5.3.0
+
+# CORS headers
+django-cors-headers>=4.0.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# Filters
+django-filter>=24.0
+
+# Static files handling (for production)
+whitenoise>=6.0.0
+
+# Image processing (optional - for image uploads)
+Pillow>=10.0.0

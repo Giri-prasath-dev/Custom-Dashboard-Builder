@@ -1,0 +1,383 @@
+@import "tailwindcss";
+
+/* ===== Google Font ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ===== Base Styles ===== */
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== React Grid Layout Styles ===== */
+.react-grid-layout {
+  position: relative;
+  transition: height 200ms ease;
+  z-index: 0;
+}
+
+.react-grid-item {
+  transition: all 200ms ease;
+  transition-property: left, top, width, height;
+  z-index: 0;
+}
+
+.react-grid-item.cssTransforms {
+  transition-property: transform, width, height;
+}
+
+.react-grid-item.resizing {
+  z-index: 1;
+  will-change: width, height;
+}
+
+.react-grid-item.react-draggable-dragging {
+  transition: none;
+  z-index: 100;
+  will-change: transform;
+  opacity: 0.9;
+}
+
+.react-grid-item.dropping {
+  visibility: hidden;
+}
+
+.react-grid-item>.react-resizable-handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+
+.react-grid-item>.react-resizable-handle::after {
+  content: "";
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid rgba(84, 189, 149, 0.5);
+  border-bottom: 2px solid rgba(84, 189, 149, 0.5);
+}
+
+.react-grid-item:hover>.react-resizable-handle::after {
+  border-right-color: rgba(84, 189, 149, 0.8);
+  border-bottom-color: rgba(84, 189, 149, 0.8);
+}
+
+.react-resizable-handle-se {
+  bottom: 0;
+  right: 0;
+  cursor: se-resize;
+}
+
+.react-resizable-handle-sw {
+  bottom: 0;
+  left: 0;
+  cursor: sw-resize;
+}
+
+.react-resizable-handle-nw {
+  top: 0;
+  left: 0;
+  cursor: nw-resize;
+}
+
+.react-resizable-handle-ne {
+  top: 0;
+  right: 0;
+  cursor: ne-resize;
+}
+
+.react-resizable-handle-w,
+.react-resizable-handle-e {
+  top: 50%;
+  margin-top: -10px;
+  cursor: ew-resize;
+}
+
+.react-resizable-handle-w {
+  left: 0;
+}
+
+.react-resizable-handle-e {
+  right: 0;
+}
+
+.react-resizable-handle-n,
+.react-resizable-handle-s {
+  left: 50%;
+  margin-left: -10px;
+  cursor: ns-resize;
+}
+
+.react-resizable-handle-n {
+  top: 0;
+}
+
+.react-resizable-handle-s {
+  bottom: 0;
+}
+
+/* ===== Grid Placeholder (Drag Target) ===== */
+.react-grid-placeholder {
+  background: rgba(84, 189, 149, 0.15);
+  border: 2px dashed #54bd95;
+  border-radius: 8px;
+  transition-duration: 100ms;
+  z-index: 1;
+  user-select: none;
+}
+
+/* ===== Canvas Grid Lines ===== */
+.canvas-grid {
+  min-height: calc(100vh - 250px);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Dashboard Container - Fixed Background, No Collapse ===== */
+/* This ensures the background stays fixed and fills the viewport */
+.dashboard-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Dashboard Canvas - Stretches to fill container ===== */
+/* Uses flexbox to ensure widgets stack properly without breaking layout */
+.dashboard-canvas {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/* Ensure the grid layout fills available space */
+.dashboard-canvas .react-grid-layout {
+  flex: 1;
+  min-height: 500px;
+}
+
+/* Empty state canvas with minimum height */
+.dashboard-canvas-empty {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Widget Wrapper - Ensures widgets don't collapse ===== */
+.widget-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+/* ===== Example: Chart Widget Inside Container ===== */
+/* This demonstrates the proper layout with a chart widget */
+.dashboard-example {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  padding: 24px;
+}
+
+.dashboard-example .widget-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-example .chart-area {
+  flex: 1;
+  min-height: 250px;
+}
+
+/* Ensure react-grid-layout fills within canvas-grid */
+.canvas-grid .react-grid-layout {
+  flex: 1;
+  min-height: 100%;
+}
+
+/* Ensure grid items clip their content (charts, legends) */
+.canvas-grid .react-grid-item {
+  overflow: hidden;
+}
+
+/* ===== Accordion Animation ===== */
+.accordion-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.2s ease-out;
+}
+
+.accordion-content.collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
+.accordion-content.expanded {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* ===== Widget Hover Actions ===== */
+.widget-card .widget-actions {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.widget-card:hover .widget-actions {
+  opacity: 1;
+}
+
+/* ===== Widget Card Cursor Behaviors ===== */
+.widget-card {
+  cursor: grab;
+}
+
+.widget-card:active {
+  cursor: grabbing;
+}
+
+.widget-card .widget-actions button {
+  cursor: pointer;
+}
+
+.widget-card .drag-handle {
+  cursor: grab;
+}
+
+.widget-card .drag-handle:active {
+  cursor: grabbing;
+}
+
+/* ===== Side Panel ===== */
+.side-panel-overlay {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+}
+
+/* ===== Draggable Widget Item ===== */
+.draggable-widget {
+  cursor: grab;
+  user-select: none;
+  transition: all 0.15s ease;
+}
+
+.draggable-widget:active {
+  cursor: grabbing;
+  opacity: 0.7;
+  transform: scale(0.98);
+}
+
+.draggable-widget:hover {
+  background-color: #ecfdf5;
+  border-color: #54bd95;
+}
+
+/* ===== Toast ===== */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* ===== Custom Scrollbar ===== */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ===== Confirmation Dialog ===== */
+.confirm-overlay {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+/* ===== Disable Browser Default Password Reveal ===== */
+/* Hide the default password reveal toggle in Edge, Chrome, Safari */
+input[type="password"]::-webkit-credentials-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  pointer-events: none;
+}
+
+input[type="password"]::-webkit-password-toggle-button {
+  visibility: hidden !important;
+  display: none !important;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Also target the parent span/container that Chrome sometimes uses */
+input[type="password"]::-webkit-caps-lock-indicator {
+  filter: invert(100%);
+}
+
+/* Hide IE/Edge default password reveal */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none !important;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* Ensure password inputs have consistent styling */
+input[type="password"] {
+  /* This ensures the browser knows we want standard text security */
+  -webkit-text-security: disc;
+  -moz-text-security: disc;
+  text-security: disc;
+}
+
+/* ===== Drag and Drop Visual Feedback ===== */
+/* Drop placeholder style for react-grid-layout */
+.react-grid-layout .react-grid-item.react-grid-placeholder {
+  background: rgba(84, 189, 149, 0.2) !important;
+  border: 2px dashed #54bd95 !important;
+  border-radius: 8px;
+  opacity: 0.5;
+}
+
+/* Style for widget being dragged from sidebar */
+.draggable-widget:active {
+  cursor: grabbing !important;
+}
+
+/* Canvas drop zone highlight */
+.canvas-grid.drag-over {
+  background: rgba(84, 189, 149, 0.05);
+  border: 2px dashed #54bd95;
+  border-radius: 8px;
+}
