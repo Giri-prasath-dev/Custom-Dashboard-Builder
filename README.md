@@ -2,6 +2,12 @@
 
 A powerful and flexible dashboard builder application that allows users to create, customize, and visualize their data with interactive charts, tables, and KPI widgets.
 
+## Demo Video Tutorial
+
+For a complete walkthrough of the Dashboard Builder features, watch our video tutorial:
+
+[Watch Video Tutorial] https://drive.google.com/drive/u/1/folders/15Lu4Xp_H8ehtmviQRSx48p9ogxCg7eeV  
+
 ## Overview
 
 Hallexy Custom Dashboard Builder is a full-stack web application built with Django (backend) and React (frontend). It provides an intuitive drag-and-drop interface for creating personalized dashboards with various visualization widgets.
@@ -24,14 +30,6 @@ Hallexy Custom Dashboard Builder is a full-stack web application built with Djan
 - **KPI Cards**: Display key metrics with customizable aggregations
 - **Data Tables**: Present data in a tabular format with sorting and filtering
 
-### Data Filtering
-
-- **Date Range Filters**: Filter dashboard data by time period
-  - All Time
-  - Today
-  - Last 7 Days
-  - Last 30 Days
-  - Last 90 Days
 
 ### User Management
 
@@ -39,12 +37,6 @@ Hallexy Custom Dashboard Builder is a full-stack web application built with Djan
 - **User Dashboard**: Each user has their own personalized dashboard
 - **Session Management**: Secure logout functionality
 
-### Additional Features
-
-- **Responsive Design**: Works on desktop and mobile devices
-- **Toast Notifications**: Get feedback on your actions
-- **Loading States**: Visual feedback during data loading
-- **Error Handling**: Graceful error messages for better UX
 
 ## Technology Stack
 
@@ -207,12 +199,7 @@ Each widget type has its own configuration panel:
 - Layout changes are automatically saved
 - Use the "Save" button to confirm all modifications
 - Use "Cancel" to discard changes and exit configure mode
-
-## Video Tutorial
-
-For a complete walkthrough of the Dashboard Builder features, watch our video tutorial:
-
-[Watch Video Tutorial] https://drive.google.com/drive/u/1/folders/15Lu4Xp_H8ehtmviQRSx48p9ogxCg7eeV   
+ 
 
 ## API Documentation
 
